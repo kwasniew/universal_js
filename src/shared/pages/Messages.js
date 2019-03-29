@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchMessages} from "../reducers/messagesReducer";
+import {Link} from "react-router-dom";
 
 class Messages extends Component {
     static loadData() {
@@ -13,7 +14,7 @@ class Messages extends Component {
 
     renderMessages() {
         return this.props.messages.map(message => {
-            return <li className="item content" key={message.id}>{message.title}</li>
+            return <li className="item content" key={message.id}><Link to={`/message/${message.id}`}>{message.title}</Link></li>
         });
     }
 

@@ -5,6 +5,12 @@ function fetchMessages() {
         .then(res => res.json());
 }
 
+function fetchMessage(id) {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .then(res => res.json());
+}
+
 export default {
-    fetchMessages
+    fetchMessages,
+    fetchMessage
 }

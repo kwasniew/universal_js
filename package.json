@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "dev": "npm-run-all --parallel watch:* start:dev",
+    "prod": "npm-run-all build:client build:server start:prod",
+    "start:dev": "nodemon build/server.js",
+    "start:prod": "node build/server.js",
+    "build:server": "parcel build --target node src/server/server.js --out-dir build",
+    "build:client": "parcel build src/client/client.js --out-dir build",
+    "watch:server": "parcel watch --no-hmr --target node src/server/server.js --out-dir build",
+    "watch:client": "parcel watch --no-hmr src/client/client.js --out-dir build"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "isomorphic-fetch": "2.2.1",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "react-redux": "6.0.1",
+    "react-router": "5.0.0",
+    "react-router-dom": "5.0.0",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0",
+    "serialize-javascript": "1.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.10",
+    "npm-run-all": "4.1.5",
+    "parcel-bundler": "1.12.3"
+  }
+}

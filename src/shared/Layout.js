@@ -1,11 +1,8 @@
 import React from "react";
 import {Link, Switch, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import Messages from "./pages/Messages";
-import NotFound from "./pages/NotFound";
-import NotReadyYet from './pages/NotReadyYet';
 import Mode from "./components/Mode";
 import {connect} from "react-redux";
+import routes from './routes';
 
 const Layout = props => (
     <div className={props.mode}>
@@ -19,10 +16,7 @@ const Layout = props => (
         <div className="ui container">
             <Mode/>
             <Switch>
-                <Route path="/" exact component={Home}/>
-                <Route path="/messages" component={Messages}/>
-                <Route path="/soon" component={NotReadyYet}/>
-                <Route component={NotFound}/>
+                {routes.map((route, i) => (<Route key={i} {...route}/>))}
             </Switch>
         </div>
     </div>

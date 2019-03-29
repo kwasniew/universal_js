@@ -1,10 +1,12 @@
 import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
+import { StaticRouter, matchPath } from "react-router-dom";
+import routes from '../shared/routes';
 import Layout from '../shared/Layout';
 import {Provider} from "react-redux";
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import reducer from '../shared/reducers';
 import {setMode} from '../shared/reducers/modeReducer';
 import serialize from 'serialize-javascript';
@@ -25,6 +27,9 @@ const template = (content, state) => `
                        .night {
                            background-color: lightgray;
                        }
+                       div + div {
+                        margin-top: 3em;
+                       }
                   </style>
             </head>
             <body>
@@ -37,11 +42,14 @@ const template = (content, state) => `
         </html>
 `;
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
     const context = {};
-    const store = createStore(reducer);
+    const store = createStore(reducer, {}, applyMiddleware(thunk));
 
     store.dispatch(setMode('night'));
+    await Promise.all(routes
+        .filter(route => matchPath(req.url, route) && route.component.loadData)
+        .map(route => store.dispatch(route.component.loadData(matchPath(req.url, route)))));
 
     const content = renderToString(
         <Provider store={store}>

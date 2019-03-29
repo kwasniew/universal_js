@@ -2,6 +2,8 @@ import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import Home from '../shared/pages/Home';
+import { StaticRouter } from "react-router-dom";
+import Layout from '../shared/Layout';
 
 const app = express();
 
@@ -20,7 +22,15 @@ const template = content => `
 `;
 
 app.get('*', (req, res) => {
-    const content = renderToString(<Home/>);
+    const context = {};
+    const content = renderToString(<StaticRouter location={req.url} context={context}><Layout/></StaticRouter>);
+
+    if(context.url) {
+        return res.redirect(context.url);
+    }
+    if(context.status) {
+        res.status(context.status);
+    }
 
     res.send(template(content));
 });

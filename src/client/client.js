@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from "react-router-dom";
 
-import Home from '../shared/pages/Home';
+import Layout from '../shared/Layout';
 
-ReactDOM.hydrate(<Home/>, document.getElementById('root'));
+ReactDOM.hydrate(<BrowserRouter><Layout/></BrowserRouter>, document.getElementById('root'));

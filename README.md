@@ -1,4 +1,4 @@
-## Universal JS apps [master](https://github.com/kwasniew/universal_js)
+# Universal JS apps [master](https://github.com/kwasniew/universal_js)
 
 ### Definition
 

@@ -1,4 +1,4 @@
-## Universal JS apps
+## Universal JS apps [master](https://github.com/kwasniew/universal_js)
 
 ### Definition
 
@@ -47,7 +47,7 @@ In this tutorial we'll try to share as much as possible to see what's possible.
 
 We'll only add as much code as needed to show the most relevant concepts.
 
-## Universal component
+## Universal component [tag](https://github.com/kwasniew/universal_js/tree/universal_component)
 
 Our app will be developed in 3 folders:
 * src/client
@@ -175,7 +175,7 @@ Parcel has a special mode for Node.js that excludes node_modules from bundling.
 
 Test your app with JS enabled and disabled.
 
-## Universal routing
+## Universal routing [tag](https://github.com/kwasniew/universal_js/commits/universal_routing)
 
 Let's add another page component
 
@@ -378,7 +378,7 @@ res.send does not trigger.
 If you test it with JS disabled you should get 302 and browser should redirect
 to the Home resource.
 
-## Interlude - basic styling
+## Interlude - basic styling [tag](https://github.com/kwasniew/universal_js/commits/basic_styling)
 
 server/server.js
 ```html
@@ -401,7 +401,7 @@ shared/Layout.js
 </div>
 ```
 
-## Universal state
+## Universal state [tag](https://github.com/kwasniew/universal_js/commits/universal_state)
 
 Next we need to see how to share state management between server and client.
 We'll use Redux to build a boilerplate for more advanced scenarios.
@@ -642,7 +642,7 @@ import Mode from "./components/Mode";
 </div>
 ```
 
-## Universal data fetching
+## Universal data fetching [tag](https://github.com/kwasniew/universal_js/commits/universal_data_fetching)
 
 This time we'll try to fetch some data on the server side and then
 render our HTML. The major difference between client and server side
@@ -871,7 +871,7 @@ class Messages extends Component {
 
 If you disable JS in the browser all messages should still get returned.
 
-## Bigger exercise
+## Bigger exercise [tag](https://github.com/kwasniew/universal_js/commits/exercise)
 
 Your task will be to implement Message page with one message fetch from the API.
 

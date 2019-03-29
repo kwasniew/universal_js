@@ -4,9 +4,11 @@ import Home from "./pages/Home";
 import Messages from "./pages/Messages";
 import NotFound from "./pages/NotFound";
 import NotReadyYet from './pages/NotReadyYet';
+import Mode from "./components/Mode";
+import {connect} from "react-redux";
 
-export default () => (
-    <div>
+const Layout = props => (
+    <div className={props.mode}>
         <h1>Messenger</h1>
         <div className="ui fixed inverted menu">
             <Link to="/" className="header item">Home</Link>
@@ -14,11 +16,20 @@ export default () => (
             <Link to="/soon" className="item">Coming Soon</Link>
             <Link to="/notFound" className="item">404</Link>
         </div>
-        <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/messages" component={Messages}/>
-            <Route path="/soon" component={NotReadyYet}/>
-            <Route component={NotFound} />
-        </Switch>
+        <div className="ui container">
+            <Mode/>
+            <Switch>
+                <Route path="/" exact component={Home}/>
+                <Route path="/messages" component={Messages}/>
+                <Route path="/soon" component={NotReadyYet}/>
+                <Route component={NotFound}/>
+            </Switch>
+        </div>
     </div>
-)
+);
+
+const mapStateToProps = (state) => ({
+    mode: state.mode,
+});
+
+export default connect(mapStateToProps)(Layout);

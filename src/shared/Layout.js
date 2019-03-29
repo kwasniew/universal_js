@@ -8,11 +8,11 @@ import NotReadyYet from './pages/NotReadyYet';
 export default () => (
     <div>
         <h1>Messenger</h1>
-        <div>
-            <Link to="/">Home</Link>
-            <Link to="/messages">Messages</Link>
-            <Link to="/soon">Coming Soon</Link>
-            <Link to="/notFound">404</Link>
+        <div className="ui fixed inverted menu">
+            <Link to="/" className="header item">Home</Link>
+            <Link to="/messages" className="item">Messages</Link>
+            <Link to="/soon" className="item">Coming Soon</Link>
+            <Link to="/notFound" className="item">404</Link>
         </div>
         <Switch>
             <Route path="/" exact component={Home}/>

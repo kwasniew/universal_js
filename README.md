@@ -358,7 +358,7 @@ It turns out that React Router populates context object with a url property
 when redirect happens.
 
 server/server.js
-```
+```javascript
 app.get('*', (req, res) => {
     const context = {};
     const content = renderToString(<StaticRouter location={req.url} context={context}><Layout/></StaticRouter>);
